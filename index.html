@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Security Intro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #071326;
+      --card: #092033;
+      --accent: #20d6ff;
+      --muted: #9fb6c8;
+      --text: #eaf7ff;
+      --btn-hover: #6cf1ff;
+    }
+
+    /* Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Inter', system-ui, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(rgba(2,16,26,0.85), rgba(5,24,38,0.9)),
+                  url("cyber.jpg") no-repeat center center fixed;
+      background-size: cover;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    nav {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 32px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    nav ul li a {
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: "";
+      display: block;
+      width: 0%;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: 2rem;
+      color: var(--accent);
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        position: absolute;
+        top: 64px;
+        right: 0;
+        background: rgba(0,0,0,0.85);
+        flex-direction: column;
+        width: 200px;
+        padding: 16px;
+        display: none;
+        border-radius: 0 0 0 12px;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      .nav-toggle {
+        display: block;
+      }
+    }
+
+    /* Container & Sections */
+    .container {
+      padding: 64px 16px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+    }
+
+    /* Button */
+    .btn {
+      border: none;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(90deg, var(--accent), var(--btn-hover));
+      color: #02242a;
+      box-shadow: 0 8px 20px rgba(32,214,255,0.2);
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(32,214,255,0.3);
+    }
+
+    section {
+      padding: 64px 16px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    section p {
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+
+    /* About Boxes */
+    .about-boxes {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      background: rgba(9,32,51,0.9);
+      padding: 24px;
+      border-radius: 16px;
+      width: 250px;
+      box-shadow: 0 8px 20px rgba(32,214,255,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(32,214,255,0.3);
+    }
+
+    .box h3 {
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .box p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    footer {
+      padding: 24px;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.9rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">CyberSec</div>
+    <div class="nav-toggle" id="nav-toggle">&#9776;</div>
+    <ul id="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="container" id="home">
+    <header>
+      <h1>FIREWALL FRENZY</h1>
+      <p class="lead">Cyber Security — Quick Intro and Practice</p>
+      <button class="btn" onclick="window.location.href='level1.html'">Start Game</button>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features">
+      <h2>Features</h2>
+      <p>Learn the basics of cyber security, understand threats, and practice decision-making in a simulated environment. Engaging exercises help you enhance your skills interactively.</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>About Us</h2>
+      <p>Meet the creators of this interactive cyber security project.</p>
+      <div class="about-boxes">
+        <div class="box">
+          <h3>Satya</h3>
+          <p>BCA student passionate about cyber security and interactive learning tools. Satya contributed to the game mechanics and design.</p>
+        </div>
+        <div class="box">
+          <h3>Megha</h3>
+          <p>BCA student with interest in web development and UI/UX. Megha worked on the frontend design, animations, and overall user experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>For inquiries, suggestions, or collaboration, reach out via email: <strong>satya@gmail.com</strong></p>
+    </section>
+  </main>
+
+  <footer>
+    Made by <strong>Satya & Megha</strong>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQUILACYBER</title>
+    <link rel="icon" type="image/png" sizes="128x128" href="images/favicon.png">
+    
+    <link rel="stylesheet" href="styles/style.css" type="text/css">
+    <link rel="stylesheet" href="customize.css" type="text/css">
+    <script src="cards.js" type="text/javascript"></script>
+</head>
+<body>
+
+  <!-- Vertical Level Switcher -->
+  <div class="level-switcher-vertical">
+    <button onclick="switchLevel(0)">Level 1</button>
+    <button onclick="switchLevel(1)">Level 2</button>
+    <button onclick="switchLevel(2)">Level 3</button>
+    <button onclick="window.location.href='index.html'">🏠 Home</button>
+  </div>
+
+  <!-- Game Board -->
+  <div class="game-board">
+      <div class="hacker-area">
+        <h1>
+          <strong>FIREWALL FRENZY</strong> <br/> Choose the best card to stop the hacker from attacking you
+        </h1>
+        <div class="stats hacker-stats">
+          <div class="life-bar">
+            <div class="life-left hacker-color"></div>
+          </div>
+          <div class="life-total"></div>
+          <div class="thumbnail">👹</div>
+          <div class="name">Hacker</div>
+        </div>
+        <div class="card hacker-card hacker-color">
+          <div class="text"></div>
+          <div class="power"></div>
+        </div>
+      </div>
+
+      <div class="player-area">
+        <div class="stats player-stats">
+          <div class="life-bar">
+            <div class="life-left player-color"></div>
+          </div>
+          <div class="life-total"></div>
+          <div class="thumbnail">😎</div>
+          <div class="name">You</div>
+        </div>
+
+        <div class="card player-card player-color">
+          <div class="text"></div>
+          <div class="power"></div>
+        </div>
+
+        <div class="card player-card player-color">
+          <div class="text"></div>
+          <div class="power"></div>
+        </div>
+
+        <div class="card player-card player-color">
+          <div class="text"></div>
+          <div class="power"></div>
+        </div>
+
+        <button class="start-game" onClick="startGame()">Play the Game!</button>
+        <button class="next-turn" onClick="playTurn()">Next!</button>
+      </div>
+  </div>
+
+  <div class="winner-section">
+      <div>
+        <span class="winner-message">You got hacked!</span>
+        <button class="restart" onClick="location.reload()">Play Again</button>
+      </div>
+  </div>
+
+  <script src="scripts/script.js" type="text/javascript"></script>
+  <script>
+    // ===== SWITCH LEVEL FUNCTION =====
+    function switchLevel(levelIndex) {
+      if(levelIndex < 0 || levelIndex >= levels.length) return;
+      initGame(levelIndex); // reset game to selected level
+      startGame();          // start the selected level
+    }
+  </script>
+</body>
+</html>
